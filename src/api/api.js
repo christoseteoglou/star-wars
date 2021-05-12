@@ -16,18 +16,18 @@ const getCharacters = async (newUrl) => {
 	}
 }
 
-// const getSingleCharacter = async (CHAR_URL) => {
-// 	try {
-// 		if (CHAR_URL) {
-// 			const response = await axios.get(CHAR_URL)
-// 			return response.data
-// 		} else {
-// 			console.log('ID is not here boss');
-// 		}
-// 	} catch (error) {
-// 		console.log(error.message);
-// 	}
-// }
+const getSingleCharacter = async (CHAR_URL) => {
+	try {
+		if (CHAR_URL) {
+			const response = await axios.get(CHAR_URL)
+			return response.data
+		} else {
+			console.log('ID is not here boss');
+		}
+	} catch (error) {
+		console.log(error.message);
+	}
+}
 
 const getHomeWorld = async (WORLD_URL) => {
 	try {
@@ -42,4 +42,18 @@ const getHomeWorld = async (WORLD_URL) => {
 	}
 }
 
-export { getCharacters, getHomeWorld}
+const searchField = async (input) => {
+	try {
+		if (input) {
+			let SEARCH_URL = URL + '?search=' + input
+			const response = await axios.get(SEARCH_URL)
+			return response.data
+		}
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+
+
+export { getCharacters, getSingleCharacter, getHomeWorld, searchField}
