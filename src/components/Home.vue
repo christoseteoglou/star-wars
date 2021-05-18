@@ -1,7 +1,12 @@
 <template>
   <div class="character-list">
-    <label for="search">Search a character: </label>
-    <input type="search" name="search" id="" @input="getSearchResult" />
+    <input
+      type="search"
+      placeholder=" Search for a character"
+      name="search"
+      id=""
+      @input="getSearchResult"
+    />
     <ul v-if="results">
       <li
         v-for="(item, index) in results"
@@ -11,7 +16,7 @@
         {{ item.name }}
       </li>
     </ul>
-    <section id="pagination">
+    <section class="paginatinons" id="pagination">
       <button
         class="buttons"
         id="previous"
@@ -34,7 +39,12 @@
 </template>
 
 <script>
-import { getCharacters, getSingleCharacter, getSearch } from "@/api/api.js";
+import {
+  getCharacters,
+  getSingleCharacter,
+  getSearch,
+  getPages,
+} from "@/api/api.js";
 import CharacterDetails from "@/components/CharacterDetails.vue";
 export default {
   components: {
@@ -65,13 +75,13 @@ export default {
     async refreshList(e) {
       try {
         if (e.target.id == "previous") {
-          const data = await getCharacters(this.previous);
+          const data = await getPages(this.previous);
           this.results = data.results;
           this.next = data.next;
           this.previous = data.previous;
           this.currentPage--;
         } else {
-          const data = await getCharacters(this.next);
+          const data = await getPages(this.next);
           this.results = data.results;
           this.next = data.next;
           this.previous = data.previous;
