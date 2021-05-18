@@ -3,6 +3,9 @@ import axios from "axios";
 let URL = "https://swapi.dev/api/people/";
 
 const getCharacters = async (newUrl) => {
+  if( newUrl[4] !== 's'){
+     newUrl = newUrl.slice(0, 4) + "s" + newUrl.slice(4);
+  }
   try {
     if (newUrl) {
       URL = newUrl;
@@ -28,6 +31,7 @@ const getSingleCharacter = async (CHAR_URL) => {
   }
 };
 const getHomeworld = async (WORLD_URL) => {
+  WORLD_URL = WORLD_URL.slice(0, 4) + "s" + WORLD_URL.slice(4);
   try {
     if (WORLD_URL) {
       const response = await axios.get(WORLD_URL);
