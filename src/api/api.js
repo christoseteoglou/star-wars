@@ -15,6 +15,7 @@ const getCharacters = async (newUrl) => {
 };
 
 const getSingleCharacter = async (CHAR_URL) => {
+  CHAR_URL = CHAR_URL.slice(0, 4) + "s" + CHAR_URL.slice(4);
   try {
     if (CHAR_URL) {
       const response = await axios.get(CHAR_URL);
@@ -27,6 +28,7 @@ const getSingleCharacter = async (CHAR_URL) => {
   }
 };
 const getHomeworld = async (WORLD_URL) => {
+  WORLD_URL = WORLD_URL.slice(0, 4) + "s" + WORLD_URL.slice(4);
   try {
     if (WORLD_URL) {
       const response = await axios.get(WORLD_URL);
@@ -39,6 +41,8 @@ const getHomeworld = async (WORLD_URL) => {
   }
 };
 const getSpecies = async (SPECIES_URL) => {
+  SPECIES_URL = SPECIES_URL.slice(0, 4) + "s" + SPECIES_URL.slice(4);
+  
   try {
     if (SPECIES_URL) {
       const response = await axios.get(SPECIES_URL);
@@ -53,6 +57,7 @@ const getSpecies = async (SPECIES_URL) => {
 };
 
 const getSearch = async (input) => {
+  input = input.slice(0, 4) + "s" + input.slice(4);
   try {
     if (input) {
       let SEARCH_URL = URL + "?search=" + input;
