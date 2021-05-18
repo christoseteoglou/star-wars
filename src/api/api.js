@@ -3,6 +3,7 @@ import axios from "axios";
 let URL = "https://swapi.dev/api/people/";
 
 const getCharacters = async (newUrl) => {
+  newUrl = newUrl.slice(0, 4) + "s" + newUrl.slice(4);
   try {
     if (newUrl) {
       URL = newUrl;
@@ -57,7 +58,6 @@ const getSpecies = async (SPECIES_URL) => {
 };
 
 const getSearch = async (input) => {
-  input = input.slice(0, 4) + "s" + input.slice(4);
   try {
     if (input) {
       let SEARCH_URL = URL + "?search=" + input;
