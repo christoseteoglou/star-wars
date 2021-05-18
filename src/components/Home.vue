@@ -63,7 +63,6 @@ export default {
       this.detailsStatus = false;
     },
     async refreshList(e) {
-      refreshList = refreshList.slice(0, 4) + "s" + refreshList.slice(4);
       try {
         if (e.target.id == "previous") {
           const data = await getCharacters(this.previous);
